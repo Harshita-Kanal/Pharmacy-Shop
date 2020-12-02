@@ -14,4 +14,7 @@ class Pharmacy extends Controller
     function list(){
         return view('list');
     }
+    function covidDetails(){
+        return view('covid');
+    }
 }

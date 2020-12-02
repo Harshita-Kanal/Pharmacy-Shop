@@ -27,4 +27,6 @@ Route::get('/pharmacy', 'App\Http\Controllers\Pharmacy@index');
 
 Route::get('/medicines', 'App\Http\Controllers\Pharmacy@list');
 
+Route::get('/covid-essentials', 'App\Http\Controllers\Pharmacy@covidDetails');
+
 Route::get('/test', [pharmacontroller::class, 'index']);
