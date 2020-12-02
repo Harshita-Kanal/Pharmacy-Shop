@@ -10,4 +10,6 @@ class pharmacontroller extends Controller
     function index(){
         return "Welcome to the shop!";
     }
+
+    
 }

@@ -25,4 +25,6 @@ Route::get('/', function () {
 
 Route::get('/pharmacy', 'App\Http\Controllers\Pharmacy@index');
 
+Route::get('/medicines', 'App\Http\Controllers\Pharmacy@list');
+
 Route::get('/test', [pharmacontroller::class, 'index']);

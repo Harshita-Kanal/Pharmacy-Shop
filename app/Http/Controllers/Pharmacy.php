@@ -10,4 +10,8 @@ class Pharmacy extends Controller
     function index(){
         return "Welcome to the shop!";
     }
+
+    function list(){
+        return view('list');
+    }
 }
