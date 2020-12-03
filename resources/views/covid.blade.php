@@ -1,9 +1,19 @@
 @extends('layout')
 
 @section('content')
+
 <div class = "container">
 <br/>
+<div class="breadcrumbs">
+        <div class="container">
+            <a href="/home">Home</a>
+            <i class="fa fa-chevron-right breadcrumb-separator"></i>
+            <span>Covid Essentials</span>
+        </div>
+</div> <!-- end breadcrumbs -->
+<br/>
 <h1 style = "text-align: center;">Covid Essentials</h1>
+
 <div style = "text-align: center">
 <img class = "img-fluid" style = "height:320px;width:470px;" src = "{{ URL::asset('images/covid-19.png') }}">
 </div>
