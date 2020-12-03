@@ -27,16 +27,20 @@ use App\Http\Controllers\CartController;
 
 Route::get('/', 'App\Http\Controllers\Pharmacy@index');
 
-Route::get('/medicines', 'App\Http\Controllers\Pharmacy@list');
+Route::get('/medicines', 'App\Http\Controllers\Pharmacy@list')->name('medicines');
 
 Route::get('/empty', function(){
     Cart::destroy();
 });
+
+
 
 Route::get('/covid-essentials', 'App\Http\Controllers\Pharmacy@covidDetails');
 
 Route::get('/medicine-list', 'App\Http\Controllers\CartController@index')->name('medicine.index');
 
 Route::post('/medicine-list', 'App\Http\Controllers\CartController@store')->name('list.index');
+
+Route::delete('/medicine-list/{medicine}', 'App\Http\Controllers\CartController@destroy')->name('list.destroy');
 
 Route::get('/test', [pharmacontroller::class, 'index']);

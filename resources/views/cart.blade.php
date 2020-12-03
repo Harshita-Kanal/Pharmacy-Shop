@@ -48,16 +48,28 @@
                 <th scope="row">{{$item->model->name }}</th>
                 <td>{{$item->model->supplier }}</td>
                 <td>{{$item->model->price}}</td>
-                <td><button class = "btn btn-danger">Remove</button></td>
+                <td>
+                <form action = "{{ route('list.destroy', $item->rowId) }}" method="POST">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <button type = "submit" class = "btn btn-danger">Remove</button>
+
+                </form>
+            </td>
             </tr>
            @endforeach
+           <tr>
+                <td>Subtotal: {{ Cart::total() }}</td>
+           </tr>
             </tbody>
             </table>
 
             @else
-
-            <h3>No items!</h3>
-
+            <div style = "text-align: center;">
+            <h3 style = "align: center;color: gray;">It's empty here </h3>
+            <br/>
+            <button class = "btn btn-warning"><a style = "color: black;" href = "{{route('medicines') }}" >Continue Shopping</a></button>
+            </div>
             @endif
 
 

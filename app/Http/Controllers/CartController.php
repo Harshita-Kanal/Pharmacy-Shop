@@ -18,4 +18,16 @@ class CartController extends Controller
 
         return redirect()->route('list.index')->with('success_message', 'Item was added');
     }
+    
+    // function empty(){
+    //     Cart::destroy();
+    // }
+    function destroy($id){
+        Cart::remove($id);
+
+        return back()->with('success_message', 'Item has been removed!');
+
+    }
+
+
 }
