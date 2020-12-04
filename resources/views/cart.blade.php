@@ -8,6 +8,8 @@
         <div class="container">
             <a href="/">Home</a>
             <i class="fa fa-chevron-right breadcrumb-separator"></i>
+            <a href="/">Store</a>
+            <i class="fa fa-chevron-right breadcrumb-separator"></i>
             <span>Medicine List</span>
         </div>
 </div> <!-- end breadcrumbs -->
@@ -60,6 +62,8 @@
            @endforeach
            <tr>
                 <td>Subtotal: {{ Cart::total() }}</td>
+                <td><a class = "btn btn-warning" style = "color: black;" href = "{{route('medicines') }}">Continue Shopping</a></td>
+                <td><a class = "btn btn-success" style = "color: black;" href = "{{route('checkout') }}">Place the order</a></td>
            </tr>
             </tbody>
             </table>
@@ -68,7 +72,7 @@
             <div style = "text-align: center;">
             <h3 style = "align: center;color: gray;">It's empty here </h3>
             <br/>
-            <button class = "btn btn-warning"><a style = "color: black;" href = "{{route('medicines') }}" >Continue Shopping</a></button>
+            <a class = "btn btn-warning"  href = "{{route('medicines') }}" >Continue Shopping</a>
             </div>
             @endif
 
