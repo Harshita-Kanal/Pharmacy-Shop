@@ -15,12 +15,25 @@ class Pharmacy extends Controller
 
     function list(){
         // return view('list');
-        $medicines = Medicine::inRandomOrder()->get();
-        $categories = category::all();
-
+        if(request()->category){
+            $medicines = Medicine::with('categories')->whereHas('categories', function($query){
+                $query->where('slug', request()->category);               
+            })->get();
+            $categories = category::all();
+            $categoryName = $categories->where('slug', request()->category)->first()->name;
+        }
+        else {
+            $medicines = Medicine::inRandomOrder()->get();
+            $categories = category::all();
+            $categoryName = 'All categories';
+        }
+       
+        
         return view('list')->with([
             'medicines'=> $medicines,
             'categories' => $categories,
+            'categoryName' => $categoryName
+
         ]);
     }
     function covidDetails(){

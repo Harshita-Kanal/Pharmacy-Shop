@@ -1,7 +1,49 @@
 @extends('layout')
 
 @section('content')
+<div class="row" id="body-row">
+    <!-- Sidebar -->
+    <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+        <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+        <!-- Bootstrap List Group -->
+        <ul class="list-group">
+            <!-- Separator with title -->
+            <!-- <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+                <small>MAIN MENU</small>
+            </li> -->
+            <a href="{{ route('medicines') }}" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-medkit fa-fw mr-3"></span>
+                    <span class="menu-collapsed">All Items</span>
+                </div>
+            </a>
+            <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-dashboard fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Categories</span>
+                    <span class="submenu-icon ml-auto"></span>
+                </div>
+            </a>
+            <!-- Submenu content -->
+            <div id='submenu2' class="collapse sidebar-submenu">
+            @foreach ($categories as $category)
+                <a href="{{ route('medicines', ['category' => $category->slug]) }}" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">{{ $category->name }}</span>
+                </a>
+            
+            @endforeach   
+            </div>
+       
+            <a href="#top" data-toggle="sidebar-colapse" class="bg-dark list-group-item list-group-item-action d-flex align-items-center">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span id="collapse-icon" class="fa fa-2x mr-3"></span>
+                    <span id="collapse-text" class="menu-collapsed">Collapse</span>
+                </div>
+            </a>
+        </ul><!-- List Group END-->
+    </div><!-- sidebar-container END -->
 <br/>
+<div class = "col p-4">
 <div class = "container">
 <div class="breadcrumbs">
         <div class="container">
@@ -18,8 +60,12 @@
     <img class = "img-fluid" style = "height:220px;width:220px;" src = "{{ URL::asset('images/cart.svg') }}">
   </div>
   <br/>
+    <h3 style = "color:grey;">{{ $categoryName  }}</h3>
+    <hr style = "color: black;"></hr>
+    <br />
+
     <div class="row">
-    @foreach($medicines as $medicine )
+    @forelse($medicines as $medicine )
     <div class =  "col-12 col-sm-4">
     <div class="card ml-3 mb-5">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
@@ -36,8 +82,41 @@
         </form>
     </div>
 </div>
-    </div>      
-    @endforeach
+    </div> 
+    @empty
+        <div><p>No Items Found</p></div>     
+    @endforelse
+    </div>
     </div>
     <br/>
+    <script>
+    // Hide submenus
+$('#body-row .collapse').collapse('hide'); 
+
+// Collapse/Expand icon
+$('#collapse-icon').addClass('fa-angle-double-left'); 
+
+// Collapse click
+$('[data-toggle=sidebar-colapse]').click(function() {
+    SidebarCollapse();
+});
+
+function SidebarCollapse () {
+    $('.menu-collapsed').toggleClass('d-none');
+    $('.sidebar-submenu').toggleClass('d-none');
+    $('.submenu-icon').toggleClass('d-none');
+    $('#sidebar-container').toggleClass('sidebar-expanded sidebar-collapsed');
+    
+    // Treating d-flex/d-none on separators with title
+    var SeparatorTitle = $('.sidebar-separator-title');
+    if ( SeparatorTitle.hasClass('d-flex') ) {
+        SeparatorTitle.removeClass('d-flex');
+    } else {
+        SeparatorTitle.addClass('d-flex');
+    }
+    
+    // Collapse/Expand icon
+    $('#collapse-icon').toggleClass('fa-angle-double-left fa-angle-double-right');
+}
+    </script>
 @stop
