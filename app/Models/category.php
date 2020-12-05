@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Medicine extends Model
+class category extends Model
 {
-    public function categories(){
-        return $this->belongsToMany('App\Models\category');
+    
+    public function products(){
+        return $this->belongsToMany('App\Models\Medicine');
     }
+   
     use HasFactory;
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Medicine;
-
+use App\Models\category;
 use Illuminate\Http\Request;
 
 class Pharmacy extends Controller
@@ -16,7 +16,12 @@ class Pharmacy extends Controller
     function list(){
         // return view('list');
         $medicines = Medicine::inRandomOrder()->get();
-        return view('list')->with('medicines', $medicines);
+        $categories = category::all();
+
+        return view('list')->with([
+            'medicines'=> $medicines,
+            'categories' => $categories,
+        ]);
     }
     function covidDetails(){
         return view('covid');

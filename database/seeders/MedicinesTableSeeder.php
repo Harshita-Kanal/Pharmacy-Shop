@@ -14,21 +14,14 @@ class MedicinesTableSeeder extends Seeder
     public function run()
     {
         //
+      
         Medicine::create([
-            'name' => 'Vaseline',
-            'slug' => 'Vaseline',
-            'details' => 'A cold cream',
-            'price' => 30,
-            'supplier' => 'Sanofi',
-           
-        ]);
-        Medicine::create([
-            'name' => 'Crocin',
-            'slug' => 'Crocin',
-            'details' => 'For Mild Fever',
+            'name' => 'amoxify',
+            'slug' => 'amoxify',
+            'details' => 'schedule-h',
             'price' => 30,
             'supplier' => 'Pharmwell',
            
-        ]);
+        ])->categories()->attach(1);
     }
 }

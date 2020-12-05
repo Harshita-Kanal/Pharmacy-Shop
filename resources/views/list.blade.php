@@ -19,7 +19,7 @@
   </div>
   <br/>
     <div class="row">
-    @foreach($medicines as $medicine)
+    @foreach($medicines as $medicine )
     <div class =  "col-12 col-sm-4">
     <div class="card ml-3 mb-5">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->

@@ -40,6 +40,7 @@
                 <th scope="col">Item</th>
                 <th scope="col">Supplier</th>
                 <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
                 <th scope="col">Action</th>
             </tr>
             </thead>
@@ -49,7 +50,8 @@
             <tr>
                 <th scope="row">{{$item->model->name }}</th>
                 <td>{{$item->model->supplier }}</td>
-                <td>{{$item->model->price}}</td>
+                <td>{{$item->model->price * $item->qty}}</td>
+                <td>{{$item->qty}}</td>
                 <td>
                 <form action = "{{ route('list.destroy', $item->rowId) }}" method="POST">
                     {{ csrf_field() }}
