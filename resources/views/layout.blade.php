@@ -32,18 +32,40 @@
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="/covid-essentials">Covid-19</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/medicine-list">List</a>
-      </li> 
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Register</a>
-      </li>    
+      </li>     
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+    <nav>
+    <ul class = "navbar-nav ">
+    @guest
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('login') }}">Login</a>
+    </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('register') }}">Register</a>
+    </li>
+    @else
+    <li class="nav-item active">   
+          <a class = "nav-link" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+              Logout
+          </a>
+
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+          </form>                       
+    </li>
+
+    @endguest
+      <li class="nav-item active">
+        <a class="nav-link" href="/medicine-list">List</a>
+      </li>
+    </nav>
+    </ul>
   </div>
 </nav>
 </header>

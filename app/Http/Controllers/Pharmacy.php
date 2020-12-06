@@ -36,6 +36,13 @@ class Pharmacy extends Controller
 
         ]);
     }
+
+    function show($slug){
+           $medicine = Medicine::where('slug', $slug)->firstOrFail();
+           return view('medicine')->with('medicines', $medicine);
+    }
+
+
     function covidDetails(){
         return view('covid');
     }

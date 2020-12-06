@@ -25,9 +25,11 @@ class CheckoutController extends Controller
         $user->address = request('address');
         $user->doctor = request('doctor');
         $user->save();
+        // $user = auth()->user();
 
         $total = Cart::subtotal();
         //insert into orders table 
+
         $order = UserOrder::create([
             'user_id'=> $user->id,
             'email' => $request->email,

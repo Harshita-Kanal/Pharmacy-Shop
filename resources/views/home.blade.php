@@ -36,7 +36,7 @@
         <h5 class="card-title">{{ $medicine->name }}</h5>
         <p class="card-text"> Rs. {{ $medicine->price }}</p>
         <p class="card-text">Manufactured By: {{ $medicine->supplier }}</p>
-        <a href="/medicines" class="btn btn-primary">View</a>
+        <a href="{{ route('medicine.show', $medicine->slug) }}" class="btn btn-primary">View</a>
     </div>
 </div>
     </div>            <!-- <div class="col-sm-4">
