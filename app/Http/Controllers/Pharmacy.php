@@ -25,7 +25,7 @@ class Pharmacy extends Controller
         else {
             $medicines = Medicine::inRandomOrder()->get();
             $categories = category::all();
-            $categoryName = 'All categories';
+            $categoryName = 'All Items';
         }
        
         

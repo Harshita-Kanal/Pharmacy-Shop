@@ -13,25 +13,28 @@ class CheckoutController extends Controller
 {
     //
     function index(){        
+        if(auth()->user() && request()->is('guestCheckout')){
+            return redirect()->route('checkout');
+        }
         return view('checkout');
     }
 
 
     function store(Request $request){
-        $user = new User();
+        // $user = new User();
 
-        $user->name = request('name');
-        // $user->email = request('email');
-        $user->address = request('address');
-        $user->doctor = request('doctor');
-        $user->save();
+        // $user->name = request('name');
+        // // $user->email = request('email');
+        // $user->address = request('address');
+        // $user->doctor = request('doctor');
+        // $user->save();
         // $user = auth()->user();
 
         $total = Cart::subtotal();
         //insert into orders table 
 
         $order = UserOrder::create([
-            'user_id'=> $user->id,
+            'user_id'=> auth()->user() ? auth()->user()->id : null,
             'email' => $request->email,
             'name' => $request->name,
             'address' => $request->address,

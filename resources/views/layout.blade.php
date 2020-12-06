@@ -14,7 +14,7 @@
     </head>
     <body>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e3075f;"> 
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e3075f; padding: 15px;"> 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -25,7 +25,7 @@
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="/medicines">Medicines</a>
+        <a class="nav-link" href="/medicines">Pharmacy</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="#">Health</a>
@@ -34,10 +34,12 @@
         <a class="nav-link" href="/covid-essentials">Covid-19</a>
       </li>     
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+      <div class = "mr-3">
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control " type="search" placeholder="Search For Products" aria-label="Search">
+          <button class="btn btn-success" type="submit"><span style = "padding: 2px;"><i class = "fa fa-search"></span></i></button>
+        </form>
+      </div>
     <nav>
     <ul class = "navbar-nav ">
     @guest

@@ -52,8 +52,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                        <div class="form-group row mb-0" style = "display: flex; align-items: space-between;">
+                        
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
@@ -63,7 +63,11 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
-                            </div>
+                               
+                               <a class = "btn btn-link" href="{{ route('guestCheckout.index') }}">Checkout as guest</a>   
+                              
+                               <a class = "btn btn-link" href="{{ route('register') }}">Register</a>   
+                          
                         </div>
                     </form>
                 </div>

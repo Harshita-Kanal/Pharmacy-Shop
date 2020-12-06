@@ -28,8 +28,13 @@
   <div class="form-group">
   {{ csrf_field() }}
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" name = "email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="{{ auth()->user()->email }}">
+    @if(auth()->user())
+    <input type="email" name = "email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="{{ auth()->user()->email }}" readonly>
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    @else
+    <input type="email" name = "email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    @endif
   </div>
   <div class="form-group">
     <label for="name">Name</label>

@@ -33,11 +33,15 @@ Route::get('/empty', function(){
     Cart::destroy();
 });
 
+
+
 Route::get('/medicines/{medicine}', 'App\Http\Controllers\Pharmacy@show')->name('medicine.show');
 
 Route::get('/covid-essentials', 'App\Http\Controllers\Pharmacy@covidDetails');
 
 Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index')->name('checkout')->middleware('auth');
+
+Route::get('/guest-checkout', 'App\Http\Controllers\CheckoutController@index')->name('guestCheckout.index');
 
 Route::post('/checkout', 'App\Http\Controllers\CheckoutController@store')->name('checkout.store');
 
