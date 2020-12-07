@@ -1,9 +1,10 @@
 @extends('layout')
 
 @section('content')
-<div class="row" id="body-row">
-    <!-- Sidebar -->
-    <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+
+<div class = "row" id = "body-row">
+   <!-- Sidebar -->
+   <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
         <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
         <!-- Bootstrap List Group -->
         <ul class="list-group">
@@ -11,28 +12,26 @@
             <!-- <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
                 <small>MAIN MENU</small>
             </li> -->
-            <a href="{{ route('medicines') }}" class="bg-dark list-group-item list-group-item-action">
+            <a href="{{ route('users.edit') }}" class="bg-dark list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-medkit fa-fw mr-3"></span>
-                    <span class="menu-collapsed">All Items</span>
+                    <span class="fa fa-user fa-fw mr-3"></span>
+                    <span class="menu-collapsed">My Profile</span>
                 </div>
             </a>
-            <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+            <a href="{{ route('orders.index') }}" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-medkit fa-fw mr-3"></span>
+                    <span class="menu-collapsed">My orders</span>
+                </div>
+            </a>
+            <!-- <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-start align-items-center">
                     <span class="fa fa-dashboard fa-fw mr-3"></span>
                     <span class="menu-collapsed">Categories</span>
                     <span class="submenu-icon ml-auto"></span>
                 </div>
-            </a>
+            </a> -->
             <!-- Submenu content -->
-            <div id='submenu2' class="collapse sidebar-submenu">
-            @foreach ($categories as $category)
-                <a href="{{ route('medicines', ['category' => $category->slug]) }}" class="list-group-item list-group-item-action bg-dark text-white">
-                    <span class="menu-collapsed">{{ $category->name }}</span>
-                </a>
-            
-            @endforeach   
-            </div>
        
             <a href="#top" data-toggle="sidebar-colapse" class="bg-dark list-group-item list-group-item-action d-flex align-items-center">
                 <div class="d-flex w-100 justify-content-start align-items-center">
@@ -42,54 +41,37 @@
             </a>
         </ul><!-- List Group END-->
     </div><!-- sidebar-container END -->
-<br/>
-<div class = "col p-4">
-<div class = "container">
+    <div class = "col p-4">
+    <div class = "container">
 <div class="breadcrumbs">
         <div class="container">
             <a href="/home">Home</a>
             <i class="fa fa-chevron-right breadcrumb-separator"></i>
-            <span>Pharmacy</span>
+            <span>My Account</span>
         </div>
- </div>
+</div> <!-- end breadcrumbs -->
+    <h1 style = "text-align: center;">My Orders</h1>
 <br/>
-</div>
-<div class = "container">
-  <div style = "text-align: center">
-    <h1 style = "text-align: center;" class="h1">Pharmacy Shop</h1>
-    <img class = "img-fluid" style = "height:220px;width:220px;" src = "{{ URL::asset('images/cart.svg') }}">
-  </div>
-  <br/>
-    <h3 style = "color:grey;">{{ $categoryName  }}</h3>
-    <hr style = "color: black;"></hr>
-    <br />
+    @if (session()->has('success_message'))
+        <div class="alert alert-success">
+            {{ session()->get('success_message') }}
+        </div>
+    @endif
 
-    <div class="row">
-    @forelse($medicines as $medicine )
-    <div class =  "col-12 col-sm-4">
-    <div class="card ml-3 mb-5">
-        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-        <div class="card-body">
-        <h5 class="card-title"><a style = "color: black;" href="{{ route('medicine.show', $medicine->slug) }}">{{ $medicine->name }}</a></h5>
-        <p class="card-text"> Rs. {{ $medicine->price }}</p>
-        <p class="card-text">Manufactured By: {{ $medicine->supplier }}</p>
-        <form action = "{{ route('list.index') }}" method = "POST">
-            {{ csrf_field() }}
-            <input type = "hidden" name = "id" value = "{{ $medicine->id }}">
-            <input type = "hidden" name = "name" value = "{{ $medicine->name }}">
-            <input type = "hidden" name = "price" value = "{{ $medicine->price }}">
-            <button class = "btn btn-warning">Add to list</button>
-        </form>
+    @if(count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    </div>
     </div>
 </div>
-    </div> 
-    @empty
-        <div><p>No Items Found</p></div>     
-    @endforelse
-    </div>
-    </div>
-    <br/>
-    <script>
+<script>
     // Hide submenus
 $('#body-row .collapse').collapse('hide'); 
 
@@ -118,5 +100,5 @@ function SidebarCollapse () {
     // Collapse/Expand icon
     $('#collapse-icon').toggleClass('fa-angle-double-left fa-angle-double-right');
 }
-    </script>
+</script>
 @stop

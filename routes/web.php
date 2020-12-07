@@ -49,9 +49,18 @@ Route::get('/medicine-list', 'App\Http\Controllers\CartController@index')->name(
 
 Route::post('/medicine-list', 'App\Http\Controllers\CartController@store')->name('list.index');
 
+Route::get('/search', 'App\Http\Controllers\Pharmacy@search')->name('search');
+
+Route::get('/my-profile', 'App\Http\Controllers\UsersController@edit')->name('users.edit')->middleware('auth');
+
+Route::get('/my-orders', 'App\Http\Controllers\OrdersController@index')->name('orders.index')->middleware('auth');
+
+Route::patch('/my-profile', 'App\Http\Controllers\UsersController@update')->name('users.update')->middleware('auth');
+
 Route::delete('/medicine-list/{medicine}', 'App\Http\Controllers\CartController@destroy')->name('list.destroy');
 
 Route::get('/test', [pharmacontroller::class, 'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

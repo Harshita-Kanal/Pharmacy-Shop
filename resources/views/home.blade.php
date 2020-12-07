@@ -21,12 +21,28 @@
   <p class="lead">Your one Stop health and pharmacy shop</p>
 </div>
 <br/>
-    <h2><span style = "color:grey;">F</span>eatured Products</h2>
+    <h2><span style = "color:grey;">C</span>ategories</h2>
     <hr style = "color: black;"></hr>
     <br />
     <div class = "products-section container">
-
     </div>
+    <div class="row">
+    @foreach($categories as $category)
+    <div class =  "col-12 col-sm-4">
+    <div style = "padding: 10px;"  class="card ml-3 mb-5">
+        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+        <h5>
+        <a href="{{ route('medicines', ['category' => $category->slug]) }}" style= "color: #1c0c17;">
+            {{ $category->name }}
+        </a>
+        </h5>  
+    </div>
+    </div>
+    @endforeach
+    </div> 
+    <h2><span style = "color:grey;">S</span>ome Products</h2>
+    <hr style = "color: black;"></hr>
+    <br />
     <div class="row">
     @foreach($medicines as $medicine)
     <div class =  "col-12 col-sm-4">

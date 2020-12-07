@@ -1,5 +1,6 @@
 <html>
     <head>
+    <!-- #e1b5ff #e3075f  #6b00b3- -->
         <title>Pharmacy Shop</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,7 @@
     </head>
     <body>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e3075f; padding: 15px;"> 
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e3075f; padding: 15px;  box-shadow: 0 8px 6px -6px gray;"> 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -35,8 +36,8 @@
       </li>     
     </ul>
       <div class = "mr-3">
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control " type="search" placeholder="Search For Products" aria-label="Search">
+        <form action = "{{ route('search') }}" class="form-inline my-2 my-lg-0">
+          <input class="form-control" value = "{{ request()->input('query') }}" name = "query"  type="search" placeholder="Search For Products" aria-label="Search">
           <button class="btn btn-success" type="submit"><span style = "padding: 2px;"><i class = "fa fa-search"></span></i></button>
         </form>
       </div>
@@ -50,6 +51,9 @@
         <a class="nav-link" href="{{ route('register') }}">Register</a>
     </li>
     @else
+    <li class="nav-item active">   
+         <a  href = "{{ route('users.edit') }}" class = "nav-link">My Account</a>                    
+    </li>
     <li class="nav-item active">   
           <a class = "nav-link" href="{{ route('logout') }}"
             onclick="event.preventDefault();

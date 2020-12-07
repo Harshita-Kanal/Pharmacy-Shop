@@ -54,7 +54,7 @@
 
                         <div class="form-group row mb-0" style = "display: flex; align-items: space-between;">
                         
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary ml-3">
                                     {{ __('Login') }}
                                 </button>
 

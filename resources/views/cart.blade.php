@@ -8,7 +8,7 @@
         <div class="container">
             <a href="/">Home</a>
             <i class="fa fa-chevron-right breadcrumb-separator"></i>
-            <a href="/">Store</a>
+            <a href="/">Pharmacy</a>
             <i class="fa fa-chevron-right breadcrumb-separator"></i>
             <span>Medicine List</span>
         </div>

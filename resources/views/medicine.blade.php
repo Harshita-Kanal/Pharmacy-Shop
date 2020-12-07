@@ -8,25 +8,29 @@
         <div class="container">
             <a href="/">Home</a>
             <i class="fa fa-chevron-right breadcrumb-separator"></i>
-            <a href="/">Medicines</a>
+            <a href="/medicines">Pharmacy</a>
             <i class="fa fa-chevron-right breadcrumb-separator"></i>
-            <span>Medicine Name</span>
+            <span>{{ $medicines->name }}</span>
         </div>
 </div> <!-- end breadcrumbs -->
 <br/>
 <h1 style = "text-align: center;">{{ $medicines->name }}</h1>
 
-<div style = "text-align: center">
+<div>
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title">{{ $medicines->details }}</h5>
-    <p class="card-text">Manufactured By: {{ $medicines->supplier }}</p>
+     
+    <h4 style = "color: gray;" class="card-title">About</h4>
+    <p class="card-text">{{ $medicines->details }}</p>
+    <!-- <h4 style = "color: gray;" class="card-title">Manufacturer</h4>
+    <p class="card-text">Manufactured By: {{ $medicines->supplier }}</p> -->
     <!-- <p class="card-text">Amount: {{ $medicines->price }}</p> -->
+    <h4 style = "color: gray;" class="card-title">Manufacturer</h4>
+    <p class="card-text">Manufactured By: {{ $medicines->supplier }}</p>
+    <h4 style = "color: gray;" class="card-title">Amount</h4>
+    <p class="card-text">Rs. {{ $medicines->price }} per packet.</p>
     <table  class="table table-hover">
     <tr>
-    <td>
-    Amount: {{ $medicines->price }}
-    </td>
     <td>
     <a href="{{ route('medicines') }}" class="btn btn-success" >Go to shop</a>
     </td>
