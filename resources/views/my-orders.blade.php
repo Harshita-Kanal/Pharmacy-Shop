@@ -67,6 +67,35 @@
             </ul>
         </div>
     @endif
+    
+<table class = "table table-striped">
+<thead>
+    <tr>
+      <th>Order Id</th>
+      <th scope="col">Sub Total</th>
+      <th scope="col">Address</th>
+      <th scope="col">Placed At</th>
+    </tr>
+  </thead>
+<tbody>
+@foreach($orders as $order)
+<tr>
+    <td>
+        {{ $order->id }}
+    </td>
+    <td>
+        {{ $order->sub_total }}
+    </td>
+    <td>
+        {{ $order->address }}
+    </td>
+    <td>
+        {{ $order->created_at }}
+    </td>
+</tr>
+@endforeach
+</tbody>
+</table>
 
     </div>
     </div>

@@ -10,5 +10,6 @@ class CustomerOrder extends Model
     public function user(){
         return $this->belongsTo('App\Models\User');
     }
+    protected $table = "user_orders";
     use HasFactory;
 }

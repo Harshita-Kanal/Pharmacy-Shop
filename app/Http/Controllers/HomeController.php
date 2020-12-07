@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Medicine;
+use App\Models\category;
 use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $medicines = Medicine::inRandomOrder()->take(3)->get();
+        $categories = category::all();
+        return view('home')->with(['medicines' => $medicines, 'categories' => $categories]);;
     }
 }

@@ -90,6 +90,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" placeholder = "new password">
+                                <small id="emailHelp" class="form-text text-muted">Leave it blank to keep the current password</small>
                             </div>
                         </div>
 
