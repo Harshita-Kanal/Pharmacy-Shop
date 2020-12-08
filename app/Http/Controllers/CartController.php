@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Cart;
 
 class CartController extends Controller
@@ -10,6 +11,30 @@ class CartController extends Controller
     //
     function index(){
         return view('cart');
+    }
+
+    function update(Request $request, $id){
+
+        $validator = Validator::make($request -> all(), [
+            'quantity' => 'required|numeric|between: 1, 20'
+        ]);
+
+        if($validator->fails()){
+            session()->flash('errors', collect(['Quantity Limit Exceeded!']));
+            return response()->json(['success' => false], 400);
+        }
+
+        //check the quantity
+
+        if($request->quantity > $request->productQuantity){
+            session()->flash('errors', collect(['We currently do not enough items in stock.']));
+            return response()->json(['success' => false], 400);
+        }
+
+        Cart::update($id, $request->quantity);
+        session()->flash('success_message', 'Quantity was updated successfully!');
+        return response()->json(['success' => true]);
+
     }
 
     function store(Request $request)

@@ -13,7 +13,7 @@
 <br/>
 </div>
 <div class = "container">
-<div style = "text-align: center; background-color: #fcedf5;padding: 40px;">
+<div style = "text-align: center; background-color: #fcedf5;padding: 40px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
   <h1 style = "color: grey" class="display-4">Welcome to MedEasy</h1>
   <div style = "text-align: center">
     <img class = "img-fluid" style = "height:320px;width:470px;" src = "{{ URL::asset('images/introduction.svg') }}">
@@ -29,7 +29,7 @@
     <div class="row">
     @foreach($categories as $category)
     <div class =  "col-12 col-sm-4">
-    <div style = "padding: 10px;"  class="card ml-3 mb-5">
+    <div style = "padding: 10px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  class="card ml-3 mb-5">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <h5>
         <a href="{{ route('medicines', ['category' => $category->slug]) }}" style= "color: #1c0c17;">
@@ -46,7 +46,7 @@
     <div class="row">
     @foreach($medicines as $medicine)
     <div class =  "col-12 col-sm-4">
-    <div class="card ml-3">
+    <div class="card ml-3" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <div class="card-body">
         <h5 class="card-title">{{ $medicine->name }}</h5>

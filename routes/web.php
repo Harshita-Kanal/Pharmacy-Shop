@@ -57,6 +57,8 @@ Route::get('/my-orders', 'App\Http\Controllers\OrdersController@index')->name('o
 
 Route::patch('/my-profile', 'App\Http\Controllers\UsersController@update')->name('users.update')->middleware('auth');
 
+Route::patch('/medicine-list/{medicine}', 'App\Http\Controllers\CartController@update')->name('list.update');
+
 Route::delete('/medicine-list/{medicine}', 'App\Http\Controllers\CartController@destroy')->name('list.destroy');
 
 Route::get('/test', [pharmacontroller::class, 'index']);

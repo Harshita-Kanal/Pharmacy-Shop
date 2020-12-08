@@ -34,7 +34,7 @@
 <div class="row">
     @forelse($medicines as $medicine )
     <div class =  "col-12 col-sm-4">
-    <div class="card ml-3 mb-5">
+    <div class="card ml-3 mb-5" style = "box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <div class="card-body">
         <h5 class="card-title">{{ $medicine->name }}</h5>

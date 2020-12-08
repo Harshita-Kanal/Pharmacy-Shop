@@ -40,7 +40,17 @@ class Pharmacy extends Controller
 
     function show($slug){
            $medicine = Medicine::where('slug', $slug)->firstOrFail();
-           return view('medicine')->with('medicines', $medicine);
+           if( $medicine->quantity > 5){
+            $stockLevel = '<h5 style = "color: green;">In Stock</h5>';
+           }
+           elseif ($medicine->quantity <= 5 && $medicine->quantity > 0 ){
+            $stockLevel = '<div class = "badge badge-warning"> Low Stock</div>';
+           }
+           else{
+            $stockLevel = '<h5 style = "color: red;"> Out of Stock</h5>';
+           }
+
+           return view('medicine')->with(['medicines' => $medicine, 'stockLevel' => $stockLevel]);
     }
 
     function search(Request $request){

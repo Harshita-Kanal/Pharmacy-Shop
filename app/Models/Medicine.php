@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Medicine extends Model
 {
+    protected $fillable = [
+        'quantity'  
+    ];
     public function categories(){
         return $this->belongsToMany('App\Models\category');
     }

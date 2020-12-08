@@ -67,19 +67,27 @@
     <div class="row">
     @forelse($medicines as $medicine )
     <div class =  "col-12 col-sm-4">
-    <div class="card ml-3 mb-5">
+    <div class="card ml-3 mb-5" style = "box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <div class="card-body">
         <h5 class="card-title"><a style = "color: black;" href="{{ route('medicine.show', $medicine->slug) }}">{{ $medicine->name }}</a></h5>
         <p class="card-text"> Rs. {{ $medicine->price }}</p>
         <p class="card-text">Manufactured By: {{ $medicine->supplier }}</p>
-        <form action = "{{ route('list.index') }}" method = "POST">
+       @if( $medicine->quantity == 0)
+            <form>
+            <button  disabled class = "btn btn-danger">Out of Stock</button>
+            <br/>
+            </form>
+            
+       @else
+            <form action = "{{ route('list.index') }}" method = "POST">
             {{ csrf_field() }}
             <input type = "hidden" name = "id" value = "{{ $medicine->id }}">
             <input type = "hidden" name = "name" value = "{{ $medicine->name }}">
             <input type = "hidden" name = "price" value = "{{ $medicine->price }}">
             <button class = "btn btn-warning">Add to list</button>
         </form>
+        @endif 
     </div>
 </div>
     </div> 
