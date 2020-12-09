@@ -47,6 +47,8 @@
         <div class="container">
             <a href="/home">Home</a>
             <i class="fa fa-chevron-right breadcrumb-separator"></i>
+            <a href="/my-orders">My Orders</a>
+            <i class="fa fa-chevron-right breadcrumb-separator"></i>
             <span>My Order</span>
         </div>
 </div> <!-- end breadcrumbs -->

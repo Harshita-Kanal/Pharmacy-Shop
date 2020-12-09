@@ -28,9 +28,9 @@
       <li class="nav-item active">
         <a class="nav-link" href="/medicines">Pharmacy</a>
       </li>
-      <li class="nav-item active">
+      <!-- <li class="nav-item active">
         <a class="nav-link" href="#">Health</a>
-      </li>
+      </li> -->
       <li class="nav-item active">
         <a class="nav-link" href="/covid-essentials">Covid-19</a>
       </li>     

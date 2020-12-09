@@ -47,7 +47,10 @@
         <div class="container">
             <a href="/home">Home</a>
             <i class="fa fa-chevron-right breadcrumb-separator"></i>
-            <span>My Account</span>
+            <a href="/my-profile">My Account</a>
+            <i class="fa fa-chevron-right breadcrumb-separator"></i>
+            <span>My Orders</span>
+            
         </div>
 </div> <!-- end breadcrumbs -->
     <h1 style = "text-align: center;">My Orders</h1>
