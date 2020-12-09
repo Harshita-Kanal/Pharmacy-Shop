@@ -69,6 +69,9 @@ class Pharmacy extends Controller
 
 
     function covidDetails(){
-        return view('covid');
+        $medicines = Medicine::with('categories')->whereHas('categories', function($query){
+            $query->where('slug', 'Covid-Essentials');               
+        })->get();
+        return view('covid')->with('medicines', $medicines);
     }
 }
