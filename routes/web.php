@@ -55,6 +55,8 @@ Route::get('/my-profile', 'App\Http\Controllers\UsersController@edit')->name('us
 
 Route::get('/my-orders', 'App\Http\Controllers\OrdersController@index')->name('orders.index')->middleware('auth');
 
+Route::get('/my-orders/{order}', 'App\Http\Controllers\OrdersController@show')->name('orders.show')->middleware('auth');
+
 Route::patch('/my-profile', 'App\Http\Controllers\UsersController@update')->name('users.update')->middleware('auth');
 
 Route::patch('/medicine-list/{medicine}', 'App\Http\Controllers\CartController@update')->name('list.update');

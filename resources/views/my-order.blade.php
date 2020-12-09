@@ -47,10 +47,10 @@
         <div class="container">
             <a href="/home">Home</a>
             <i class="fa fa-chevron-right breadcrumb-separator"></i>
-            <span>My Account</span>
+            <span>My Order</span>
         </div>
 </div> <!-- end breadcrumbs -->
-    <h1 style = "text-align: center;">My Orders</h1>
+    <h1 style = "text-align: center;">Order ID: {{ $order->id }}</h1>
 <br/>
     @if (session()->has('success_message'))
         <div class="alert alert-success">
@@ -67,20 +67,49 @@
             </ul>
         </div>
     @endif
-    
-<table class = "table table-striped">
+
+<h3>Product Details</h3>  
+<table class = "table table-hover">
 <thead>
+
     <tr>
-      <th>Order Id</th>
-      <th scope="col">Sub Total</th>
-      <th scope="col">Address</th>
-      <th scope="col">Placed At</th>
-      <!-- <th scope="col">Items ordered</th> -->
-      <th scope= "col">Action</th>
+      <th scope = "col">Product Sr no.</th>
+      <th scope="col">Item Ordered</th>
+      <th scope="col">Action</th>   
     </tr>
   </thead>
 <tbody>
-@foreach($orders as $order)
+@foreach($products as $product)
+<tr>
+    <td>
+            {{ $product->id }}
+    </td>
+    <td>    
+            <p> {{ $product->name }} </p>
+      
+    </td>
+    <td>
+            <a class = "btn btn-warning"  href = "{{ route('medicine.show' , $product->slug)}}">View Item</a>
+    </td>
+</tr>
+@endforeach
+</tbody>
+</table>
+
+<br/>
+<h3>Order Details</h3>
+<table class = "table table-hover">
+<thead>
+    <tr>
+      <th>Order Id</th>
+      <th scope="col">Subtotal</th>
+      <th scope="col">Address on order</th> 
+      <th scope = "col">Order Date</th>
+      <th scope="col">Doctor name</th> 
+
+    </tr>
+  </thead>
+<tbody>
 <tr>
     <td>
         {{ $order->id }}
@@ -95,21 +124,14 @@
         {{ $order->created_at->format('d-m-Y') }}
     </td>
     <td>
-        <a href = "{{ route('orders.show', $order->id) }}" class = "btn btn-success">View</a>
+        {{ $order->doctor}}
     </td>
-    <!-- <td>
-        @foreach($order->products as $product)
-            <p> {{ $product->name }} </p>
-        @endforeach
-    </td> -->
 </tr>
-@endforeach
 </tbody>
 </table>
-
-    </div>
-    </div>
 </div>
+
+
 <script>
     // Hide submenus
 $('#body-row .collapse').collapse('hide'); 

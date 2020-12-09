@@ -44,7 +44,7 @@ class Pharmacy extends Controller
             $stockLevel = '<h5 style = "color: green;">In Stock</h5>';
            }
            elseif ($medicine->quantity <= 5 && $medicine->quantity > 0 ){
-            $stockLevel = '<div class = "badge badge-warning"> Low Stock</div>';
+            $stockLevel = '<h5  style = "color: #dea60d;"> Low Stock</h5>';
            }
            else{
             $stockLevel = '<h5 style = "color: red;"> Out of Stock</h5>';
