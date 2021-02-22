@@ -1,6 +1,6 @@
-## *__MedEasy: A Pharmacy Shop__*
+# *__MedEasy: A Pharmacy Shop__*
 
-Features:
+## Features
 - Ordering of Medicines
 - Stock Management
 - Admin Panel
